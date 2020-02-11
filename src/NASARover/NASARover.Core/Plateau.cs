@@ -1,9 +1,11 @@
 ﻿namespace NASARover.Core
 {
     using System;
+
+    using NASARover.Core.Interfaces;
     using NASARover.Core.Models;
 
-    public class Plateau
+    public class Plateau : IPlateau
     {
         public Point BottomLeftPosition { get; }
 

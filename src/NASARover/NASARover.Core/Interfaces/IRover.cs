@@ -9,7 +9,7 @@
 
         Direction FaceDirection { get; }
 
-        Plateau Plateau { get; }
+        IPlateau Plateau { get; }
 
         void Move();
 

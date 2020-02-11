@@ -1,6 +1,7 @@
 ﻿namespace NASARover.Core
 {
     using System;
+
     using NASARover.Core.Enums;
     using NASARover.Core.Interfaces;
     using NASARover.Core.Models;
@@ -11,11 +12,11 @@
 
         public Direction FaceDirection { get; private set; }
 
-        public Plateau Plateau { get; }
+        public IPlateau Plateau { get; }
 
-        public Rover(Plateau plateau) : this(plateau, new Point(0, 0), Direction.North) { }
+        public Rover(IPlateau plateau) : this(plateau, new Point(0, 0), Direction.North) { }
 
-        public Rover(Plateau plateau, Point startPosition, Direction faceDirection)
+        public Rover(IPlateau plateau, Point startPosition, Direction faceDirection)
         {
             Plateau = plateau;
             Position = startPosition;
@@ -32,7 +33,7 @@
             }
             else
             {
-                throw new ArgumentException($"Cannot move rover: point {movePoint} is invalid");
+                throw new ArgumentException($"Cannot move rover: point {movePoint} is invalid.");
             }
 
             Point GetMovePoint()
@@ -58,11 +59,6 @@
             {
                 FaceDirection = FaceDirection == Direction.West ? Direction.North : FaceDirection + 1;
             }
-        }
-
-        public override string ToString()
-        {
-            return $"[Position: ({Position}), Directtion: {FaceDirection}]";
         }
     }
 }

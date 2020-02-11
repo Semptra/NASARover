@@ -14,7 +14,7 @@
 
         public override string ToString()
         {
-            return $"X: {X}, Y: {Y}";
+            return $"(X: {X}, Y: {Y})";
         }
     }
 }
