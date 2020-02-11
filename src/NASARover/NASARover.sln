@@ -1,0 +1,29 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NASARover.ConsoleApp", "NASARover.ConsoleApp\NASARover.ConsoleApp.csproj", "{C8468E38-C317-4EBD-A047-EF6AC00469EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NASARover.Core", "NASARover.Core\NASARover.Core.csproj", "{7B1AD434-2394-430F-86A7-337A097ED0D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NASARover.Tests", "NASARover.Tests\NASARover.Tests.csproj", "{C4D8F48E-11A8-4486-AECF-1DE822C8BF55}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8468E38-C317-4EBD-A047-EF6AC00469EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8468E38-C317-4EBD-A047-EF6AC00469EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8468E38-C317-4EBD-A047-EF6AC00469EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8468E38-C317-4EBD-A047-EF6AC00469EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B1AD434-2394-430F-86A7-337A097ED0D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B1AD434-2394-430F-86A7-337A097ED0D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B1AD434-2394-430F-86A7-337A097ED0D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B1AD434-2394-430F-86A7-337A097ED0D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4D8F48E-11A8-4486-AECF-1DE822C8BF55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4D8F48E-11A8-4486-AECF-1DE822C8BF55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4D8F48E-11A8-4486-AECF-1DE822C8BF55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4D8F48E-11A8-4486-AECF-1DE822C8BF55}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
