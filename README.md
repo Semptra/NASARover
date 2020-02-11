@@ -35,6 +35,7 @@ until the first one has finished moving.
 ### OUTPUT
 The output for each rover should be its final co-ordinates and heading.
 Example Program Flow:
+```
 Enter Graph Upper Right Coordinate: 5 5
 Rover 1 Starting Position: 1 2 N
 Rover 1 Movement Plan: LMLMLMLMM
@@ -42,3 +43,4 @@ Rover 1 Output: 1 3 N
 Rover 2 Starting Position: 3 3 E
 Rover 2 Movement Plan: MMRMMRMRRM
 Rover 2 Output: 5 1 E
+```
