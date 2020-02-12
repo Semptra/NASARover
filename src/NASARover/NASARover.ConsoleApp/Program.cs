@@ -76,7 +76,7 @@
 
                 try
                 {
-                    return intParser.ParsePositiveFromString(numberOfRovers);
+                    return intParser.ParseGreaterThanZeroFromString(numberOfRovers);
                 }
                 catch (Exception ex)
                 {

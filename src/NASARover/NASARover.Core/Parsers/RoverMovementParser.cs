@@ -34,7 +34,7 @@
                 }
             }
 
-            return $"[Position: ({rover.Position}), Direction: {rover.FaceDirection}]";
+            return $"[Position: {rover.Position}, Direction: {rover.FaceDirection}]";
         }
     }
 }

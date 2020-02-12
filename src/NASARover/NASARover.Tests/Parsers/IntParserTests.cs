@@ -29,6 +29,7 @@
 
         static IEnumerable<TestCaseData> ParsePositiveFromStringValidData()
         {
+            yield return new TestCaseData("0", 0);
             yield return new TestCaseData("1", 1);
             yield return new TestCaseData("42", 42);
             yield return new TestCaseData("2147483647", int.MaxValue);
@@ -56,7 +57,6 @@
 
         static IEnumerable<TestCaseData> ParsePositiveFromStringInvalidIntData()
         {
-            yield return new TestCaseData("0");
             yield return new TestCaseData("-1");
             yield return new TestCaseData("-2147483648");
             yield return new TestCaseData("1O"); // this is O, not 0
