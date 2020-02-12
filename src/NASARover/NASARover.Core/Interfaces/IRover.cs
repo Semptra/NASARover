@@ -14,5 +14,7 @@
         void Move();
 
         void Rotate(Rotation rotation);
+
+        void ExecuteCommand(IRoverCommand command);
     }
 }

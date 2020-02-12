@@ -23,49 +23,38 @@
 
         [Test]
         [TestCaseSource(nameof(ParseFromStringValidData))]
-        public void ParseFromString_Valid_Tests(string input, Rover rover, string expected)
+        public void ParseFromString_Valid_Tests(string input, Rover rover, Rover expected)
         {
-            var actual = _parser.ParseFromString(input, rover);
+            var commands = _parser.ParseFromString(input);
 
-            Assert.AreEqual(expected, actual);
+            foreach(var command in commands)
+            {
+                rover.ExecuteCommand(command);
+            }
+
+            Assert.AreEqual(rover.Position, expected.Position);
+            Assert.AreEqual(rover.FaceDirection, expected.FaceDirection);
         }
 
         static IEnumerable<TestCaseData> ParseFromStringValidData()
         {
             var plateau = new Plateau(new Point(5, 5));
-            yield return new TestCaseData("LMLMLMLMM", new Rover(plateau, new Point(1, 2), Direction.North), "[Position: (X: 1, Y: 3), Direction: North]");
-            yield return new TestCaseData("MMRMMRMRRM", new Rover(plateau, new Point(3, 3), Direction.East), "[Position: (X: 5, Y: 1), Direction: East]");
-            yield return new TestCaseData("MLMRRMLM", new Rover(plateau, new Point(2, 1), Direction.West), "[Position: (X: 0, Y: 1), Direction: West]");
+            yield return new TestCaseData("LMLMLMLMM", new Rover(plateau, new Point(1, 2), Direction.North), new Rover(plateau, new Point(1, 3), Direction.North));
+            yield return new TestCaseData("MMRMMRMRRM", new Rover(plateau, new Point(3, 3), Direction.East), new Rover(plateau, new Point(5, 1), Direction.East));
+            yield return new TestCaseData("MLMRRMLM", new Rover(plateau, new Point(2, 1), Direction.West), new Rover(plateau, new Point(0, 1), Direction.West));
         }
 
         [Test]
         [TestCaseSource(nameof(ParseFromStringInvalidEmptyInputData))]
-        public void ParseFromString_Invalid_Empty_Input_Tests(string input, Rover rover)
+        public void ParseFromString_Invalid_Empty_Input_Tests(string input)
         {
-            Assert.Throws<ArgumentNullException>(() => _parser.ParseFromString(input, rover));
+            Assert.Throws<ArgumentNullException>(() => _parser.ParseFromString(input));
         }
 
         static IEnumerable<TestCaseData> ParseFromStringInvalidEmptyInputData()
         {
-            var plateau = new Plateau(new Point(5, 5));
-            var position = new Point(0, 0);
-            yield return new TestCaseData(null, new Rover(plateau, position, Direction.North));
-            yield return new TestCaseData(string.Empty, new Rover(plateau, position, Direction.East));
-        }
-
-        [Test]
-        [TestCaseSource(nameof(ParseFromStringInvalidData))]
-        public void ParseFromString_Invalid_Tests(string input, Rover rover)
-        {
-            Assert.Throws<ArgumentException>(() => _parser.ParseFromString(input, rover));
-        }
-
-        static IEnumerable<TestCaseData> ParseFromStringInvalidData()
-        {
-            var plateau = new Plateau(new Point(5, 5));
-            yield return new TestCaseData("MMLMMMM", new Rover(plateau, new Point(0, 0), Direction.North));
-            yield return new TestCaseData("RMM", new Rover(plateau, new Point(5, 0), Direction.East));
-            yield return new TestCaseData("MM", new Rover(plateau, new Point(0, 0), Direction.South));
+            yield return new TestCaseData(null);
+            yield return new TestCaseData(string.Empty);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace NASARover.Core
 {
     using System;
-
+    using NASARover.Core.Commands;
     using NASARover.Core.Enums;
     using NASARover.Core.Interfaces;
     using NASARover.Core.Models;
@@ -58,6 +58,21 @@
             else
             {
                 FaceDirection = FaceDirection == Direction.West ? Direction.North : FaceDirection + 1;
+            }
+        }
+
+        public void ExecuteCommand(IRoverCommand command)
+        {
+            switch (command)
+            {
+                case MoveRoverCommand _:
+                    Move();
+                    break;
+                case RotateRoverCommand rotateCommand:
+                    Rotate(rotateCommand.Rotation);
+                    break;
+                default:
+                    throw new ArgumentException($"Unknown command: {command.GetType()}");
             }
         }
     }

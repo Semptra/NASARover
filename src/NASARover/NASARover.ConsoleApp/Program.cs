@@ -1,6 +1,7 @@
 ﻿namespace NASARover.ConsoleApp
 {
     using System;
+    using System.Collections.Generic;
 
     using NASARover.Core;
     using NASARover.Core.Interfaces;
@@ -20,32 +21,12 @@
             {
                 var rover = GetRover(plateau);
                 var roverNumber = i + 1;
-                var roverEndPosition = GetRoverEndPosition(roverNumber, rover);
-                Console.WriteLine($"Rover {roverNumber} end position: {roverEndPosition}");
+                var roverCommands = GetRoverCommands(roverNumber);
+                ExecuteRoverCommands(roverCommands, rover, roverNumber);
             }
         }
 
-        private static string GetRoverEndPosition(int roverNumber, IRover rover)
-        {
-            var movementPlanParser = new RoverMovementParser();
-
-            while (true)
-            {
-                Console.Write($"Enter rover {roverNumber} movement plan: ");
-                var movementPlan = Console.ReadLine();
-
-                try
-                {
-                    return movementPlanParser.ParseFromString(movementPlan, rover);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error moving the rover: {ex.Message}. Please try again.");
-                }
-            }
-        }
-
-        static Plateau GetPlateau()
+        private static Plateau GetPlateau()
         {
             var plateauParser = new PlateauParser();
 
@@ -65,7 +46,7 @@
             }
         }
 
-        static int GetNumberOfRovers()
+        private static int GetNumberOfRovers()
         {
             var intParser = new IntParser();
 
@@ -85,7 +66,7 @@
             }
         }
 
-        static Rover GetRover(IPlateau plateau)
+        private static Rover GetRover(IPlateau plateau)
         {
             var roverParser = new RoverParser();
 
@@ -102,6 +83,43 @@
                 {
                     Console.WriteLine($"Error creating rover: {ex.Message}. Please try again.");
                 }
+            }
+        }
+
+        private static List<IRoverCommand> GetRoverCommands(int roverNumber)
+        {
+            var movementPlanParser = new RoverMovementParser();
+
+            while (true)
+            {
+                Console.Write($"Enter rover {roverNumber} movement plan: ");
+                var movementPlan = Console.ReadLine();
+
+                try
+                {
+                    return movementPlanParser.ParseFromString(movementPlan);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error moving the rover: {ex.Message}. Please try again.");
+                }
+            }
+        }
+
+        private static void ExecuteRoverCommands(IEnumerable<IRoverCommand> commands, IRover rover, int roverNumber)
+        {
+            try
+            {
+                foreach (var command in commands)
+                {
+                    rover.ExecuteCommand(command);
+                }
+
+                Console.WriteLine($"Rover {roverNumber} end position: [X: {rover.Position.X}, Y: {rover.Position.Y}, Direction: {rover.FaceDirection}]");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error executing rover commands: {ex.Message}.");
             }
         }
     }
