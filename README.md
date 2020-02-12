@@ -2,7 +2,7 @@
 Utility program to simulate rover movements
 
 ## How to run console app
-This program is build with **.NET Core 3.1** (`NASARover.ConsoleApp` and `NASARover.Tests`) and **.NET Standard 2.1** (`NASARover.Core`). To build and run you need to install latest [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download).
+This program is build with **.NET Core 3.1** (`NASARover.ConsoleApp` and `NASARover.Tests`) and **.NET Standard 2.1** (`NASARover.Core`). To build and run you need to install latest [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download). Note that in order to compile and run the latest version of Visual Studio or Visual Studio for Mac is required (2019).
 
 You could run the console application in two different ways:
 
